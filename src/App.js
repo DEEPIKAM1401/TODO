@@ -1,3 +1,4 @@
+import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
@@ -25,6 +26,8 @@ function App() {
   ]
   )
 
+  const [newItem, setNewItem] = useState('');
+
   const handleCheck = (id)=>{
     const listItems = items.map((item)=>
     item.id===id ? {...item, checked:!item.checked}:item)
@@ -35,9 +38,22 @@ function App() {
     const listItems = items.filter((item)=> item.id !== id)
     setItems(listItems)
   }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    if(!newItem) return;
+    console.log(newItem);
+    setNewItem('');
+  }
+
   return (
     <div className='App'>
         <Header title="Deepika Coder"/>
+        <AddItem
+          newItem = {newItem}
+          setNewItem = {setNewItem}
+          handleSubmit = {handleSubmit}
+        />
         <Content 
           items = {items}
           handleCheck = {handleCheck}
