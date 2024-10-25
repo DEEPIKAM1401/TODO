@@ -2,7 +2,7 @@ import React from "react";
 import ItemsList from "./ItemsList";
 
 const Content = ({items, handleCheck, handleDelete}) => {
-  console.log(items);
+  
   
   return (
     <main>
